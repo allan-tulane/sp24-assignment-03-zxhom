@@ -2,7 +2,8 @@ from main import *
 
 def test_MED():
     for S, T in test_cases:
-        assert fast_MED(S, T) == MED(S, T)
+        opt, arr = fast_MED(S, T)
+        assert opt == MED(S, T)
                                  
 def test_align():
     for i in range(len(test_cases)):
