@@ -30,10 +30,10 @@ def fast_MED(S, T):
   # Iterating through each element of the 2D array
   for m in range(len(S) + 1):
     for n in range(len(T) + 1):
-      if (S == ""):  # Base
+      if m == 0:  # Base
         arr[m][n] = n
 
-      elif (T == ""):  # Base
+      elif n == 0:  # Base
         arr[m][n] = m
 
       elif S[m - 1] == T[n - 1]:  # -1 bc index with
@@ -47,7 +47,6 @@ def fast_MED(S, T):
 
   return (arr[len(S)][len(T)], arr)
   #return (arr[len(S)][len(T)])
-
 
 # def fast_align_MED(S, T):
 #   opt, arr = fast_MED(S, T)
@@ -101,14 +100,15 @@ def fast_align_MED(S, T):
       string_t = T[n] + string_t
       m -= 1
       n -= 1
-    elif m > 0 and arr[m - 1][n] <= arr[m][n - 1]:
-      string_s = S[m] + string_s
-      string_t = "-" + string_t
-      m -= 1
     else:
-      string_s = "-" + string_s
-      string_t = T[n] + string_t
-      n -= 1
+      if arr[m][n + 1] <= arr[m + 1][n]:
+        string_s = S[m] + string_s
+        string_t = "-" + string_t
+        m -= 1
+      else:
+        string_s = "-" + string_s
+        string_t = T[n] + string_t
+        n -= 1
 
   while m >= 0:
     string_s = S[m] + string_s
@@ -124,15 +124,17 @@ def fast_align_MED(S, T):
 
 
 print(fast_align_MED('book', 'back'))
-#print(fast_MED('book', 'back'))
+# r, _ = fast_MED('book', 'back')
+# print(r)
 
-#print(MED('book', 'baok'))
+# print(MED('book', 'back'))
 
 print(fast_align_MED('kookaburra', 'kookybird'))
-#print(MED('kookaburra', 'kookybird'))
+print(MED('kookaburra', 'kookybird'))
 
-#print(fast_MED('elephant', 'relevant')[1])
-#print(MED('elephant', 'relevant'))
+print(fast_MED('kookaburra', 'kookybird')[0])
+# print(fast_align_MED('AAAGAATTCA', 'AAATCA'))
 
-#print(fast_MED('battle', 'bitter')[0])
-#print(MED('battle', 'bitter'))
+print(MED('battle', 'bitter'))
+print(fast_MED('battle', 'bitter')[0])
+print(fast_align_MED('battle', 'bitter'))

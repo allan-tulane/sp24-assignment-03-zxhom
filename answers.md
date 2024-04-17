@@ -9,7 +9,7 @@ Place all written answers from `assignment-03.md` here for easier grading.
 
 **1b)** The greedy choice is the maximum k such that the coin value $2^k$ <= N, decrementing N accordingly each time. Each optimal substructure considers one solution for k from the set of potential solutions that will not be revisited, breaking down the problem into smaller parts at the sublink level to achieve the overall optimal solution.
 
-**1c)** Since each possible coin value of $2^k$ is considered only once and N is decremented each time by a denomination of 2, W = O(log(n)); however, because these k values cannot be evaluated in parallel, S = O(n).
+**1c)** Since each possible coin value of $2^k$ is considered only once and N is decremented each time by a denomination of 2, W = O(log(n)); however, because these k values cannot be evaluated in parallel, S = O(log(n)).
 
 **2a)** Let's say the denominations in Fortuito are $1, $5, $8 and let's assume N = $15. Using the greedy algorithm of Geometrica, we find that the "optimal" solution output is, in fact, not optimal.
 Geometrica Solution: $8, $5, $1, $1 --> 4 coins
